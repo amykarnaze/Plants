@@ -11,7 +11,8 @@ class Plants extends Component {
   constructor(props) {
   super(props)
     this.state = {
-      plants: []
+      plants: [], 
+      favorites: []
     }
   }
 
@@ -22,11 +23,22 @@ class Plants extends Component {
     .catch(error => alert(error.message))
   }
 
+  handleClick = (event) => {
+    const id= event.target.id;
+    const lovedPlant = this.state.plants.find(plant => plant.id === id)
+    const isLoved = this.state.favorites.includes(lovedPlant)
+    const onList = this.state.favorites.includes(lovedPlant)
+
+    if(!onList) {
+      this.setState({favorites: [...this.state.favorites, lovedPlant]})
+    }
+  }
+
   displayPlants() {
     // console.log("PPP", this.state.plants)
     return this.state.plants.map(plant => {
       // console.log('plantsmap', plant)
-      return <PlantCard plant={plant} />
+      return <PlantCard plant={plant} addFavorite={this.handleClick} />
     })
   }
 
