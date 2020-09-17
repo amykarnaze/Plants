@@ -1,0 +1,14 @@
+.img {
+  display: flex;
+  height: 90em;
+  width: 100em;
+}
+
+.plant-card-image {
+  height: 35em;
+  border: solid 1px black;
+  padding: 2em;
+  margin: 1em;
+
+}
+
