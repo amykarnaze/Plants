@@ -1,11 +1,11 @@
 // import React from 'react';
 // import logo from './logo.svg';
 import React, { Component } from 'react'
-
 import './App.css';
 import Header from '../Header/Header'
 import Plants from '../Plants/Plants'
 import PlantInfo from '../PlantInfo/PlantInfo'
+import Favorites from '../Favorites/Favorites'
 import PlantCard from '../PlantCard/PlantCard'
 import { fetchAllPlants } from '../../API.js'
 
@@ -24,6 +24,16 @@ class App extends Component {
     <main>
       <Header />
       <Route exact path="/" component={Plants}></Route>
+      <Route path='/favorites/' 
+        render={() =>
+        <Favorites />
+      }/>
+      <Route path='/plants/:id' 
+        render={(props) =>
+        <PlantInfo 
+        {...props}
+        />}
+      />
     </main>
   )
 }
