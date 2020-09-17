@@ -22,11 +22,20 @@ class Plants extends Component {
     .catch(error => alert(error.message))
   }
 
+  displayPlants() {
+    // console.log("PPP", this.state.plants)
+    return this.state.plants.map(plant => {
+      // console.log('plantsmap', plant)
+      return <PlantCard plant={plant} />
+    })
+  }
+
   render() {
     let plantCards = this.displayPlants()
     return (
       <section>
         <h1>PLANTS!</h1>
+       {this.state.plants ? <section className="plants-container">{plantCards}</section> : <h1>Sorry, no plant right now</h1>}
       </section>
     )
   }
