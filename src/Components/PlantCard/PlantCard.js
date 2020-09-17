@@ -8,6 +8,7 @@ const PlantCard = (props) => {
   // console.warn("PPP", props)
   return(
     <section className="plant-card">
+      <section className="plants">
       <Link to={{
         pathname:`plants/${props.plant.id}`
       }}>
@@ -15,6 +16,12 @@ const PlantCard = (props) => {
       <img className="plant-card-image" alt={props.plant.common_name} src={props.plant.image_url} />
       <h3>{props.plant.scientific_name}</h3>
       </Link>
+      </section>
+     <Link to={{
+       pathname:`favorites/`
+     }}>
+     <button className="love" id={props.plant.id} onClick={props.addFavorite}>Love</button>
+     </Link>
     </section>
   )
 }
