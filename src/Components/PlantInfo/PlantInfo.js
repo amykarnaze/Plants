@@ -10,7 +10,6 @@ class PlantInfo extends React.Component {
       id: Number(this.props.match.params.id),
       indvPlant: {}
     }
-    console.warn(this.state.indvPlant)
   }
 
   async componentDidMount() {
@@ -21,7 +20,6 @@ class PlantInfo extends React.Component {
   }
 
   render() {
-    console.log(this.state.indvPlant)
     return (
       <section className="Plant-Info">
         <h1>Plant Info</h1>
