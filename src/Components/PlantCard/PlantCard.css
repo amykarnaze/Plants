@@ -5,10 +5,24 @@
 }
 
 .plant-card-image {
-  height: 35em;
+  height: 20em;
+  width: 20em;
   border: solid 1px black;
   padding: 2em;
   margin: 1em;
 
 }
 
+/* .plant-card {
+  display: inline-block;
+  padding: 1em 1em 1em 1em;
+} */
+
+.plants {
+  display: grid;
+  grid-gap: 35 px;
+  height: 100 %;
+  width: auto;
+  grid-template-columns: repeat(auto - fit, minmax(250 px, 1 fr));
+  background: chartreuse;
+}
