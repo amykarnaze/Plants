@@ -18,16 +18,14 @@ class App extends Component {
       // plants: [],
     }
     }
+          // <Route path='/favorites/' component={Favorites}></Route>
+
 
   render () {
   return (
     <main>
       <Header />
       <Route exact path="/" component={Plants}></Route>
-      <Route path='/favorites/' 
-        render={() =>
-        <Favorites />
-      }/>
       <Route path='/plants/:id' 
         render={(props) =>
         <PlantInfo 
