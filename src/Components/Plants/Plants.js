@@ -3,6 +3,8 @@ import './Plants.css'
 import { fetchAllPlants } from '../../API.js'
 import PlantCard from '../PlantCard/PlantCard'
 import Favorites from '../Favorites/Favorites'
+import { Route, Link, Switch } from 'react-router-dom';
+
 
 // import { connect } from 'react-redux'
 // import { setPlants } from '../../actions';
@@ -10,74 +12,56 @@ import Favorites from '../Favorites/Favorites'
 
 class Plants extends Component {
   constructor(props) {
-  super(props)
-    this.state = {
-      plants: [], 
-      favorites: []
-    }
+    super(props)
+    console.log("PROPRO", this.props)
   }
 
-  componentDidMount() {
-    fetchAllPlants() 
-    .then(data => this.setState({plants: data.data}))
-    // .then(data => console.log("PLANTS", data.data))
-    .catch(error => alert(error.message))
-  }
-
-  const handleClick = async (event) => {
-    const id = Number(event.target.id);
-    const lovedPlant = await this.state.plants.find(plant => plant.id === id)
-    console.log("lovedPlant", lovedPlant)
-    const onList = await this.state.favorites.includes(lovedPlant)
-    console.log("OnLIST",onList)
-
-    if(onList) {
-      this.setState({favorites: [...this.state.favorites, lovedPlant]})
-      // this.state.favorites.concat(lovedPlant)
-      console.warn(this.state.favorites)
-    } else {
-      let removePlant = this.state.favorites.filter(plant => plant !== lovedPlant)
-      this.setState({favorites: removePlant})
-    }
-    
-  }
-
-  // displayFavorites = () => {
-  //   // if (this.state.favorites) {
-  //     console.log(this.state.favorites)
-  //   let foundFavorites =  this.state.favorites.filter(favorite => {
-  //     return <Favorites favorite={favorite} handleClick={this.handleClick} />
-  //   })
-  //   console.warn(foundFavorites)
-  //   return foundFavorites
-
-  //   // }
+  // componentDidMount() {
+  //   fetchAllPlants() 
+  //   .then(data => this.setprops({plants: data.data}))
+  //   // .then(data => console.log("PLANTS", data.data))
+  //   .catch(error => alert(error.message))
   // }
 
+  
+  // displayFavorites = () => {
+  //   if (this.props.favorites) {
+  //     // console.log(this.props.favorites)
+  //   let foundFavorites =  this.props.favorites.map(favorite => {
+  //     return <Favorites favorite={favorite} />
+  //     // return <PlantCard plant={favorite} />
+  //   })
+  //   // console.log({foundFavorites})
+  //   return foundFavorites
+
+  //   }
+  // }
+  
+
+
   displayPlants() {
-    // console.log("PPP", this.state.plants)
-    return this.state.plants.map(plant => {
-      // console.log('plantsmap', plant)
-      return <PlantCard plant={plant} addFavorite={this.handleClick} />
+    return this.props.plants.map(plant => {
+      return <PlantCard plant={plant} handleClick={this.props.handleClick}/>
     })
   }
 
   render() {
     let plantCards = this.displayPlants()
-    // let favorites = this.displayFavorites()
-    {console.log(this.state.favorites)}
     return (
-      <section>
-        <h1>PLANTS!</h1>
-       {this.state.plants ? <section className="plants-container">{plantCards}</section> : <h1>Sorry, no plant right now</h1>}
-       {this.state.favorites ? <section className="favorites-container"></section> : <h1>You dont have any right now</h1>}
+      <section className="actual-plants-container">
+        <div className="plants-here-container">{plantCards}</div> 
       </section>
     )
   }
 }
 export default Plants
+       //{<div className="favorites-here-container">{favorites}</div>}
 
-// export const mapStateToProps = ({ plants }) => ({
+//<Link to="/favorites">
+  //<Favorites favorites={favorites} />
+  //</Link>
+
+// export const mappropsToProps = ({ plants }) => ({
 //   plants
 // })
 
@@ -87,4 +71,4 @@ export default Plants
 //   }, dispatch)
 // )
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Plants);
+// export default connect(mappropsToProps, mapDispatchToProps)(Plants);
