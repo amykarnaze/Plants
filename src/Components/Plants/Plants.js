@@ -14,6 +14,7 @@ class Plants extends Component {
   constructor(props) {
     super(props)
     console.log("PROPRO", this.props)
+
   }
 
   // componentDidMount() {
@@ -38,10 +39,17 @@ class Plants extends Component {
   // }
   
 
+// if the plants array contains the favorites id
+// change display
+
+// isfavorite ? display1 : display2
+  isFavorite(plant) {
+    return this.props.favorites ? this.props.favorites.includes(plant.id) : false
+  }
 
   displayPlants() {
     return this.props.plants.map(plant => {
-      return <PlantCard plant={plant} handleClick={this.props.handleClick}/>
+      return <PlantCard plant={plant} handleClick={this.props.handleClick} isFavorite={this.isFavorite(plant)} />
     })
   }
 
