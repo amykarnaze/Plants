@@ -7,7 +7,7 @@ import Plants from '../Plants/Plants'
 import PlantInfo from '../PlantInfo/PlantInfo'
 import Favorites from '../Favorites/Favorites'
 import PlantCard from '../PlantCard/PlantCard'
-// import Search from '../Search/Search'
+import Search from '../Search/Search'
 import { fetchAllPlants } from '../../API.js'
 
 import { Route, Link, Switch } from 'react-router-dom';
@@ -44,6 +44,18 @@ class App extends Component {
     }
   }
 
+  searchPlants = (search) => {
+    const plantSearch = search.charAt(0).toUpperCase() + search.slice(1).toLowerCase()
+    let findBooks = this.props.books.forEach(plant => {
+      if (plant.title.includes(plantSearch)) {
+        this.setState({
+          foundPlant: [plant]
+        })
+      }
+    })
+    return findBooks;
+  }
+
   render () {
     return (
       <section className="App-container">
@@ -51,6 +63,7 @@ class App extends Component {
         <section className="actual-plants-container">
           <h1>PLANTS!</h1>
           <Route exact path="/">
+          <Search searchPlants={this.searchPlants}/>
           {this.state.plants && <Plants plants={this.state.plants} favorites={this.state.favorites.map(fav => fav.id)} handleClick={this.handleClick}/>}
           </Route>
         </section>
