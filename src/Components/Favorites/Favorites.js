@@ -1,21 +1,33 @@
 import React from 'react'
 import './Favorites.css'
 import PropTypes from 'prop-types'
-import '../Plants/Plants'
+import PlantCard from '../PlantCard/PlantCard'
+
+//make same as plants.js
+//instead of all plants, just use favorites
+// display fav here 
+// pass fav comp all of favorites so 
+
 
 const Favorites = (props) => {
-console.warn(props)
+  const displayFavorites = () => {
+    if (props) {
+      let foundFavorites = props.favorites.map(favorite => {
+        return <PlantCard plant={favorite} />
+      })
+    return foundFavorites
+  }
+}
   return (
     <section className="favorites">
-      <section>{!props.favorite.length < 0 ? <p className='no-favorites'>You don't have any loved plants right now</p> :
-      <section><h1>Your Favorites</h1>
-      <h2>{props.favorite.common_name}</h2>
-      </section>
-  }
-    </section>
+        <h1>Your Favorites</h1>
+      {displayFavorites()}
     </section>
   )
-
+  
 }
+//<section>{props.favorite.length < 0 ? <p className='no-favorites'>You don't have any loved plants right now</p> :
+
+// </section>
 
 export default Favorites
