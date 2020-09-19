@@ -5,19 +5,18 @@ import { Link } from 'react-router-dom'
 // import PropTypes from 'prop-types'
 
 const PlantCard = (props) => {
+  console.log(props)
   return(
     <section className="plant-card">
-      <section className="plants">
-      <Link to={{
-        pathname:`plants/${props.plant.id}`
+
+    <Link to={{
+      pathname:`plants/${props.plant.id}`
       }}>
-        <h1>{props.plant.common_name}</h1>
         <img className="plant-card-image" alt={props.plant.common_name} src={props.plant.image_url} />
-        <h3>{props.plant.scientific_name}</h3>
       </Link>
-     <button id={props.plant.id} onClick={props.addFavorite}>Love</button>
-      </section>
-    
+        <h1 className="common-name">{props.plant.common_name}</h1>
+        <h3 className="sci-name">{props.plant.scientific_name}</h3>
+     <button id={props.plant.id} onClick={props.handleClick} className="add-button">Love</button>
     </section>
   )
 }
