@@ -26,7 +26,10 @@
   /* width: 20em;
   grid-template-columns: repeat(auto - fit, minmax(250 px, 1 fr));
   background: chartreuse; */
-.common-name {
+.on {
+  color: pink;
+}
+  .common-name {
   text-align: center;
 }
 
