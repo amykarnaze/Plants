@@ -7,31 +7,46 @@ import { fetchAllPlants } from '../../API.js'
 jest.mock('../../API')
 
 describe('Plants', () => {
-  it('should render plants', async () => {
-    // mock fetch call
-    fetchAllPlants.mockResolvedValue([{
+  it('should have the correct content when rendered', async () => {
+    let plants = [
+    {
+      id: "524047",
       common_name: "lawndaisy",
       family: "Asteracea",
       image_url: "https://bs.floristic.org/image/o/43061c6c2cb49908503eac2eaec0ddab69958e17",
       scientific_name: "Bellis perennis"
     },
     {
-      common_name: "chicory",
-      family: "Asteracea",
-      image_url: "https://bs.floristic.org/image/o/eb049be6b9186aed76ada3c8d3cd54d762842aa8",
-      scientific_name: "Cichorium intybus"
-    }])
+      id: "111174",
+      common_name: "lawndaisy",
+      scientific_name: "Bellis perennis",
+      image_url: "https://bs.floristic.org/image/o/43061c6c2cb49908503eac2eaec0ddab69958e17",
+      scientific_name: "Bellis perennis"
+    }
+  ]
+  let plant = [
+  {
+    id: "524047",
+    common_name: "lawndaisy",
+    family: "Asteracea",
+    image_url: "https://bs.floristic.org/image/o/43061c6c2cb49908503eac2eaec0ddab69958e17",
+    scientific_name: "Bellis perennis"
+  }
+]
+    const favorites = [plant]
+    const handleClick = jest.fn();
+    const displayPlants = jest.fn()
 
-// render  component
-      render(<BrowserRouter><Plants /></BrowserRouter>)
+    // render(<BrowserRouter><Plants plants={plant} favorites={favorites} handleClick={handleClick} displayPlants={displayPlants}/></BrowserRouter>)
+    const {getByText} = render(<BrowserRouter><Plants plants={plant} favorites={favorites} handleClick={handleClick} displayPlants={displayPlants}/></BrowserRouter>)
 
-      const name = await waitFor(() => screen.getByText("lawndaisy"))
-      const sciName = await waitFor(() => screen.getByText("Bellis perennis"))
-      const url = await waitFor(() => screen.getByRole("img", "lawndaisy"))
+    // const name = await waitFor(() => screen.getByText("lawndaisy"))
+    const name = await waitFor(() => getByText("lawndaisy"))
+    const sciName = screen.getByText("Bellis perennis")
+    const url = screen.getByRole("img", "lawndaisy")
 
-      expect(name).toBeInTheDocument();
-      expect(sciName).toBeInTheDocument();
-      expect(url).toBeInTheDocument();
-
+    expect(name).toBeInTheDocument();
+    expect(sciName).toBeInTheDocument();
+    expect(url).toBeInTheDocument();
   })
   })
