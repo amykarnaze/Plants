@@ -8,8 +8,16 @@
 }
 
 .found-plant-cards {
-  height: 20px;
+  height: 200px;
+  width: 100%;
+  margin-left: 50px;
+  margin-right: 50px;
   border: 1px solid teal;
+}
+
+.plant-image {
+  height: 25px;
+  width: 25px;
 }
 
 /* @media (prefers-reduced-motion: no-preference) {
