@@ -7,7 +7,6 @@ import unfav from '../../assets/unfav.png'
 import PropTypes from 'prop-types'
 
 const PlantCard = (props) => {
-  console.log(props)
   return(
     <section className="plant-card">
 
