@@ -18,6 +18,7 @@ class App extends Component {
     this.state = {
       plants: [],
       favorites: [],
+      foundPlants: []
       }
   }
 
@@ -44,28 +45,55 @@ class App extends Component {
     }
   }
 
-  searchPlants = (search) => {
-    const plantSearch = search.charAt(0).toUpperCase() + search.slice(1).toLowerCase()
-    let findBooks = this.props.books.forEach(plant => {
-      if (plant.title.includes(plantSearch)) {
-        this.setState({
-          foundPlant: [plant]
-        })
+  searchPlants = async (search) => {
+    // const plantSearch = search.charAt(0).toUpperCase() + search.slice(1).toLowerCase()
+    let findPlants = await this.state.plants.forEach(plant => {
+      if (plant.common_name.includes(search)) {
+        this.setState({foundPlants: [plant]})
       }
     })
-    return findBooks;
+    return findPlants;
   }
+
+  // displayFoundPlants = async () => {
+  //   if (this.state.foundPlants) {
+  //     let displayPlants = await this.state.foundPlants.map(found => {
+  //       return <PlantCard plant={found} />
+  //     })
+  //     return displayPlants
+  //   }
+  // }
 
   render () {
     return (
       <section className="App-container">
         <Header />
         <section className="actual-plants-container">
-          <h1>PLANTS!</h1>
-          <Route exact path="/">
-          <Search searchPlants={this.searchPlants}/>
-          {this.state.plants && <Plants plants={this.state.plants} favorites={this.state.favorites.map(fav => fav.id)} handleClick={this.handleClick}/>}
-          </Route>
+        <h1>PLANTS!</h1>
+        <Route exact path={'/'} render={() => {
+          return (<>
+            <h1 className='browse-plants'>Browse plants</h1>
+            <Search searchPlants={this.searchPlants}/>
+            <section className="found-plant-cards" alt="found-plant-cards">
+              { this.state.foundplants ? 
+                this.state.foundplants.map(plant => {
+                  return (
+                    <>
+                      <h1 className='found-plant'>{plant.common_name}</h1>
+                      <h3 className='found-plant author'>{plant.scientific_name}</h3>
+                      <Link to={`/${plant.id}`}>
+                        <img className="plant-image" alt={plant.common_name} src={plant.image_url} />
+                      </Link>
+                    </>
+                  )
+                }) : 
+                <h1 className='search-prompt'>Search For plant by Title or Author</h1>
+              }
+            </section>
+            {this.state.plants && <Plants plants={this.state.plants} favorites={this.state.favorites.map(fav => fav.id)} handleClick={this.handleClick}/>}
+          </>)
+        }}
+  />
         </section>
           <div className="favorites-here-container">
         <Route path='/favorites/'>
