@@ -75,8 +75,8 @@ class App extends Component {
             <h1 className='browse-plants'>Browse plants</h1>
             <Search searchPlants={this.searchPlants}/>
             <section className="found-plant-cards" alt="found-plant-cards">
-              { this.state.foundplants ? 
-                this.state.foundplants.map(plant => {
+              { this.state.foundPlants ? 
+                this.state.foundPlants.map(plant => {
                   return (
                     <>
                       <h1 className='found-plant'>{plant.common_name}</h1>
@@ -87,13 +87,13 @@ class App extends Component {
                     </>
                   )
                 }) : 
-                <h1 className='search-prompt'>Search For plant</h1>
+                <h1 className='search-prompt'>Search For plant </h1>
               }
             </section>
             {this.state.plants && <Plants plants={this.state.plants} favorites={this.state.favorites.map(fav => fav.id)} handleClick={this.handleClick}/>}
           </>)
         }}
-  />
+        />
         </section>
           <div className="favorites-here-container">
         <Route path='/favorites/'>
