@@ -7,6 +7,11 @@
   pointer-events: none;
 }
 
+.found-plant-cards {
+  height: 20px;
+  border: 1px solid teal;
+}
+
 /* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
