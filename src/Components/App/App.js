@@ -81,7 +81,7 @@ class App extends Component {
                     <>
                       <h1 className='found-plant'>{plant.common_name}</h1>
                       <h3 className='found-plant author'>{plant.scientific_name}</h3>
-                      <Link to={`/${plant.id}`}>
+                      <Link to={`/plants/${plant.id}`}>
                         <img className="plant-image" alt={plant.common_name} src={plant.image_url} />
                       </Link>
                     </>
