@@ -11,12 +11,12 @@ class Search extends Component {
       }
   }
 
-  handleClick(event) {
-    event.preventDefault();
-    this.setState({search: event.target.value})
+  handleClick = (event) => {
+    let input = event.target.value
+    this.setState({search: input})
   }
 
-  searchInput(event) {
+  searchInput = (event) => {
     event.preventDefault()
     this.props.searchPlants(this.state.search)
     this.setState({search: ''})
