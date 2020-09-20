@@ -87,7 +87,7 @@ class App extends Component {
                     </>
                   )
                 }) : 
-                <h1 className='search-prompt'>Search For plant by Title or Author</h1>
+                <h1 className='search-prompt'>Search For plant</h1>
               }
             </section>
             {this.state.plants && <Plants plants={this.state.plants} favorites={this.state.favorites.map(fav => fav.id)} handleClick={this.handleClick}/>}
