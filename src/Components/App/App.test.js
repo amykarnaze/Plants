@@ -54,22 +54,15 @@ describe('App component', () => {
       expect(url).toBeInTheDocument();
 
   })
-  it.skip('should render Header component when page loads', () => {
-    render(<BrowserRouter><Header /></BrowserRouter>)
 
-  })
-
-  it.skip('should display all plants on page load', () => {
-
-  })
 
   it.skip('should take the user to the homepage when the home button is clicked', () => {
-    render(<BrowserRouter><Header /></BrowserRouter>)
-
+    render(<BrowserRouter><App /></BrowserRouter>)
+    
   })
 
-  it.skip('should take the user to the homepage when the Plant List button is clicked', () => {
-    render(<BrowserRouter><Header /></BrowserRouter>)
+  it.skip('should take the user to the favorites page when the Plant List button is clicked', () => {
+    render(<BrowserRouter><App /></BrowserRouter>)
 
   })
 
