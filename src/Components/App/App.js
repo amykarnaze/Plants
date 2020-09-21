@@ -9,6 +9,7 @@ import Favorites from '../Favorites/Favorites'
 import PlantCard from '../PlantCard/PlantCard'
 import Search from '../Search/Search'
 import { fetchAllPlants } from '../../API.js'
+import PropTypes from 'prop-types'
 
 import { Route, Link, Switch } from 'react-router-dom';
 
@@ -113,7 +114,6 @@ App.propTypes = {
   favorites: PropTypes.array,
   foundPlants: PropTypes.array,
   searchPlants: Proptypes.func,
-  handleClick: Proptypes.func,
-
+  handleClick: Proptypes.func
 }
  
