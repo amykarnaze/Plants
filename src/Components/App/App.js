@@ -32,7 +32,6 @@ class App extends Component {
 
   handleClick = async (event) => {
     const id = Number(event.target.id);
-    console.log("+++", id)
     const lovedPlant = await this.state.plants.find(plant => plant.id === id)
     console.log("lovedPlant", lovedPlant)
     const onList = await this.state.favorites.includes(lovedPlant)
@@ -68,7 +67,6 @@ class App extends Component {
     return (
       <section className="App-container">
         <Header />
-        <section className="actual-plants-container">
         <h1>PLANTS!</h1>
         <Route exact path={'/'} render={() => {
           return (<>
@@ -94,12 +92,9 @@ class App extends Component {
           </>)
         }}
         />
-        </section>
-          <div className="favorites-here-container">
         <Route path='/favorites/'>
           <Favorites favorites={this.state.favorites} />
         </Route>
-          </div>
         <Route path='/plants/:id' 
           render={(props) =>
           <PlantInfo 
@@ -111,7 +106,14 @@ class App extends Component {
   }
 }
 
-
 export default App;
 
+App.propTypes = {
+  plants: PropTypes.array,
+  favorites: PropTypes.array,
+  foundPlants: PropTypes.array,
+  searchPlants: Proptypes.func,
+  handleClick: Proptypes.func,
+
+}
  
