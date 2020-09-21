@@ -4,19 +4,21 @@
   width: 35em;
 } */
 
-/* .plants-here-container {
-  display: grid;
-  margin: 1em;
-  grid-gap: 35px;
-  width: 100%;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-} */
 .plants-here-container {
+  padding-left: 20px;
+  padding-right: 20px;
+  display: grid;
+  margin: 2px;
+  grid-gap: 15px;
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+/* .plants-here-container {
   width: 50%;
   display: flex;
-  flex: wrap;
+  flex-wrap: wrap; */
   /* flex-direction: row; */
-  justify-content: space-between;
+  /* justify-content: space-between; */
   /* overflow: scroll; */
   /* border-top: 2px solid teal;
   border-bottom: 2px solid teal;
@@ -25,7 +27,7 @@
   padding-top: 1%;
   padding-bottom: 2%;
   margin-bottom: 5%; */
-}
+/* } */
 
 /* .actual-plants-container {
   border: 10px solid black;
