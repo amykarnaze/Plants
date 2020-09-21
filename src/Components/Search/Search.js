@@ -36,3 +36,8 @@ class Search extends Component {
 }
 
 export default Search
+
+Search.propTypes = {
+  onClick: PropTypes.func,
+  search: PropTypes.string
+}

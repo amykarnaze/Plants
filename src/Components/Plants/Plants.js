@@ -23,11 +23,14 @@ class Plants extends Component {
   render() {
     let plantCards = this.displayPlants()
     return (
-      <section className="actual-plants-container">
-        <div className="plants-here-container">{plantCards}</div> 
-      </section>
+        <span className="plants-here-container">{plantCards}</span> 
     )
   }
 }
 
 export default Plants
+
+Plants.propTypes = {
+  isFavorite: PropTypes.func,
+  plantCards: PropTypes.func
+}

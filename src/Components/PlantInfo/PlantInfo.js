@@ -33,3 +33,8 @@ class PlantInfo extends React.Component {
 {/* <h1>Plant family:{this.state.indvPlant.images.other[0]}</h1> */}
 
 export default PlantInfo;
+
+PlantInfo.propTypes = {
+  indvPlant: PropTypes.object,
+  id: PropTypes.number
+}
