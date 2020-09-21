@@ -1,44 +1,57 @@
-/* .img {
-  display: flex;
-  height: 25em;
-  width: 25em;
-} */
-
-
-.plant-card-image {
-  height: 10em;
-  width: 10em;
-  /* border: solid 1px black; */
-  padding: 2em;
-  margin: 2em;
-
+.img {
+  height: 25px;
+  width: 25px;
 }
-
 
 .plant-card {
-  height: 30em;
-  width: 30em;
-  margin: 1em;
+  height: 200px;
+  width: 250px;
+  /* margin-top: 3px; */
+  margin-left: 1px;
+  margin-right: 1px;
   border: 1px solid;
+  background-color: chartreuse;
+  border-radius: 5px;
+  padding-bottom: 10em;
+  
 }
-  /* grid-gap: 35 px; */
-  /* height: 100 %; */
-  /* width: 20em;
+
+.plant-card-image {
+  height:65%;
+  width: auto;
+  align-items: center;
+  /* border: solid 1px black; */
+  padding-bottom: 3em;
+  margin: 1em;
+
+}
+.add-button {
+  /* margin-left: 5em; */
+  height: 2em;
+  width: 5em;
+}
+
+/* grid-gap: 35 px; */
+/* height: 100 %; */
+/* width: 20em;
   grid-template-columns: repeat(auto - fit, minmax(250 px, 1 fr));
   background: chartreuse; */
+
+
+
+  
+
 .on {
   color: pink;
 }
   .common-name {
   text-align: center;
+  font-size: 18px;
 }
 
 .sci-name {
   text-align: center;
+font-size: 13px;
+
 }
 
-.add-button {
-  margin-left: 5em;
-  height: 2em;
-  width: 5em;
-}

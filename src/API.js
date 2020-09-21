@@ -18,7 +18,6 @@ const ediblePlantsUrl = "https://cors-anywhere.herokuapp.com/https://trefle.io/a
 export const fetchAllPlants = async () => {
   const response = await fetch(ediblePlantsUrl, { header: 'Access-Control-Allow-Origin' })
   .then(response => {
-    console.log(response)
     if (response.ok) {
       return response.json()
     } else {
@@ -29,7 +28,6 @@ export const fetchAllPlants = async () => {
 }
 
 export const fetchPlantInfo = async (id) => {
-  console.log(id)
   const indvPlantUrl = `https://cors-anywhere.herokuapp.com/https://trefle.io/api/v1/species/${id}?token=Y_DWydtmE3ap7Rg1OMEKHoCWdACktJTUY4sTYrGwJ6Q`
   const response = await fetch(indvPlantUrl, { 
     header: 'Access-Control-Allow-Origin'})

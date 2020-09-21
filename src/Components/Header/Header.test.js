@@ -9,11 +9,11 @@ describe('Header', () => {
 
     const homeLink = screen.getByText('HOME')
     const plantList = screen.getByText('YOUR PLANT LIST')
-    const img = screen.getByAltText("plant-pic")
+    // const img = screen.getByAltText("plant-pic")
 
     expect(homeLink).toBeInTheDocument();
     expect(plantList).toBeInTheDocument();
-    expect(img).toBeInTheDocument();
+    // expect(img).toBeInTheDocument();
   })
 
   

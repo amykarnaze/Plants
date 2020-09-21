@@ -31,3 +31,9 @@ const Favorites = (props) => {
 // </section>
 
 export default Favorites
+
+Favorites.propTypes = {
+  plants: PropTypes.object,
+  favorites: PropTypes.array,
+  displayFavorites: PropTypes.func
+}
