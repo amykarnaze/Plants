@@ -28,7 +28,6 @@ describe('App component', () => {
         }
     ]})
       const { getByText} = render(<BrowserRouter><App /></BrowserRouter>)
-      // render(<BrowserRouter><App /></BrowserRouter>)
       const name = await waitFor(() => screen.getByText("lawndaisy"))
       const sciName = await waitFor(() => screen.getByText("Bellis perennis"))
       const url = await waitFor(() => screen.getByAltText("lawndaisy"))
