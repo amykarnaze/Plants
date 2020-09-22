@@ -15,13 +15,13 @@ describe('Plants', () => {
     }
     render(<BrowserRouter><PlantCard plant={plant} handleClick={handleClick} isFavorite={plant} /></BrowserRouter>)
 
+    const plantImg = await waitFor(() => screen.getByAltText('lawndaisy', { exact: false }))
     const name = screen.getByText("lawndaisy")
     const sciName = screen.getByText("Bellis perennis")
-    const url = screen.getByRole("img", "lawndaisy")
 
     expect(name).toBeInTheDocument();
     expect(sciName).toBeInTheDocument();
-    expect(url).toBeInTheDocument();
+    expect(plantImg).toBeInTheDocument();
 
   })
 })
