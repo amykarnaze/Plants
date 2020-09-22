@@ -79,6 +79,7 @@ class App extends Component {
                 <h1 className='search-prompt'>Search For plant </h1>
               }
             </section>
+            <h2>Check out these plants!</h2>
             {this.state.plants && <Plants plants={this.state.plants} handleClick={this.handleClick}/>}
           </>)
         }}
