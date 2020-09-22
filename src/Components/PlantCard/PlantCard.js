@@ -9,23 +9,22 @@ import PropTypes from 'prop-types'
 const PlantCard = (props) => {
   return(
     <section className="plant-card">
-       <h1 className="common-name">{props.plant.common_name}</h1>
-        <h3 className="sci-name">{props.plant.scientific_name}</h3>
+        <img id={props.plant.id} onClick={props.handleClick} className='unfav' src={props.plant.plantLoved ? fav : unfav} alt={props.plant.scientific_name} />
       <Link to={{pathname:`plants/${props.plant.id}` }}>
-        <img className="plant-card-image" alt={props.plant.common_name} src={props.plant.image_url} />
+        <img className="plant-card-image active" alt={props.plant.common_name} src={props.plant.image_url} />
       </Link>
-      <button id={props.plant.id} onClick={props.handleClick} className={`add-button ${props.isFavorite ? "on" : ""}`}>Love</button>
+        <h1 className="common-name">{props.plant.common_name}</h1>
+        <h3 className="sci-name">{props.plant.scientific_name}</h3>
     </section>
         
           /*            `banner ${active ? "active" : ""}`
 
-          /*<img id={props.plant.id} onClick={props.handleClick} className='unfav' src={props.isFavorite ? fav : unfav} alt="favorite" />
            */
   )
 }
 
 export default PlantCard
 
-PlantCard.PropTypes= {
+PlantCard.propTypes= {
   handleClick: PropTypes.func
 }
