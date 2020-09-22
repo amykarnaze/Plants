@@ -1,68 +1,54 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Edible Plants
 
-## Available Scripts
+## Authors
 
-In the project directory, you can run:
+👤 **Amy Karnaze**
+- Github: [amykarnaze](https://github.com/amykarnaze/bon-appetit/commits?author=relyt4me)
 
-### `npm start`
+### Abstract
 
-Runs the app in the development mode.<br />
+Edible plants is a mod 3 solo project that allowed us to build an app of our own imagination. An edible plants app was created to let users see all the plants that one can eat in the world! Plants are displayed and more information can be viewed if you are interested in a particular plant. A user can add plants they love to a list.
+
+Any user can view all plants, plant details and favorite a plant to a list:<br />
+![homepage](https://media.giphy.com/media/3MEFqQC4gnkCsubi1w/giphy.gif)
+
+### SetUp
+
+To view this application,
+1) Clone down the repository button and copy the link, [git clone](https://github.com/amykarnaze/Plants).
+2) Cd into the project
+3) Run `npm install`.
+4) Run `npm test` to see tests pass.
+5) `npm start` runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `npm test`
+A user can search for plants by name:<br />
+![search](https://media.giphy.com/media/qdUclUcHVs34PXCvVO/giphy.gif)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Major Technologies
+* React
+* React Router
+* Fetch API
+* Jest
+* JSX
 
-### `npm run build`
+## Resources
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+View the Turing schools, [Project Spec](https://frontend.turing.io/projects/module-3/binary-challenge.html)
+GitHub [Project Board](https://github.com/amykarnaze/Plants/projects/1)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Wins
+* React Jest testing asynchronous methods
+* Components and file structure are well organized 
+* Succesfully created a React app solo
+* Utilizing react router and its render properties
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Challenges
+* Learning jest mocking syntax
+* Async and await timing issues
 
-### `npm run eject`
+### Next plan
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+In the future, I would like to add a backend with more medicial plant details that will allow users to search by location and display medicinal properties. In addition, include more photos of each plant for identification.
