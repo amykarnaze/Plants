@@ -59,7 +59,7 @@ class App extends Component {
     return (
       <section className="App-container">
         <Header />
-        <h1>PLANTS!</h1>
+        <h1>EDIBLE PLANTS!</h1>
         <Route exact path={'/'} render={() => {
           return (<>
             <Search searchPlants={this.searchPlants}/>
