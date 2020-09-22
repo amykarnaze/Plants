@@ -2,25 +2,19 @@
   height: 130px;
   width: 100%;
   border-bottom: 1px solid #bea8A7;
-  background-color: whitesmoke;
-  /* display: flex;
-  align-items: center; */
-  /* min-width: 401px; */
 }
 
 nav ul {
   float: right;
-  margin-right: 20px;
+  margin-right: 50px;
 }
 
 nav ul li {
   display: inline-block;
-  /* line-height: 120px; */
   margin: 0 5px;
 }
 
 .nav-link {
-  /* font-family: 'Amatic SC', cursive; */
   font-size: 32px;
   font-weight: 500;
   color: magenta;
@@ -33,7 +27,7 @@ nav ul li {
 
 .nav-link:hover {
   background: #F4DBD8;
-  /* transition: 0.5s; */
-  color: teal;
+  transition: 0.5s;
+  color: magenta;
   border: none;
 }

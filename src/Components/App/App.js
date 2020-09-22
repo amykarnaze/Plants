@@ -1,49 +1,44 @@
-// import React from 'react';
-// import logo from './logo.svg';
 import React, { Component } from 'react'
 import './App.css';
 import Header from '../Header/Header'
 import Plants from '../Plants/Plants'
 import PlantInfo from '../PlantInfo/PlantInfo'
 import Favorites from '../Favorites/Favorites'
-import PlantCard from '../PlantCard/PlantCard'
 import Search from '../Search/Search'
-import { fetchAllPlants } from '../../API.js'
+import { formatPlants } from '../../CleanData'
 import PropTypes from 'prop-types'
-
-import { Route, Link, Switch } from 'react-router-dom';
+import { Route, Link} from 'react-router-dom';
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
       plants: [],
-      favorites: [],
       foundPlants: []
       }
   }
 
   componentDidMount = async () => {
-    await fetchAllPlants() 
-    .then(data => this.setState({plants: data.data}))
-    // .then(data => console.log("PLANTS", data.data))
+    await formatPlants()
+    .then(data => this.setState({plants: data}))
     .catch(error => alert(error.message))
   }
 
-
   handleClick = async (event) => {
     const id = Number(event.target.id);
-    const lovedPlant = await this.state.plants.find(plant => plant.id === id)
-    console.log("lovedPlant", lovedPlant)
-    const onList = await this.state.favorites.includes(lovedPlant)
-    if(!onList) {
-      const newFavorites = [... this.state.favorites, lovedPlant]
-      this.setState({favorites: newFavorites})
-    } else {
-      let removePlant = this.state.favorites.filter(plant => plant !== lovedPlant)
-      this.setState({favorites: removePlant})
+    const lovedPlant = await this.state.plants.find(plant => {
+      return plant.id === id
+    })
+    let favoriteObj;
+    favoriteObj = lovedPlant;
+    favoriteObj.plantLoved = (!lovedPlant.plantLoved)
+
+    let filteredPlants = this.state.plants.filter(plant => {
+      return plant.id !== favoriteObj.id
+    })
+      filteredPlants.push(favoriteObj)
+      this.setState({plants: filteredPlants})
     }
-  }
 
   searchPlants = async (search) => {
     // const plantSearch = search.charAt(0).toUpperCase() + search.slice(1).toLowerCase()
@@ -55,14 +50,10 @@ class App extends Component {
     return findPlants;
   }
 
-  // displayFoundPlants = async () => {
-  //   if (this.state.foundPlants) {
-  //     let displayPlants = await this.state.foundPlants.map(found => {
-  //       return <PlantCard plant={found} />
-  //     })
-  //     return displayPlants
-  //   }
-  // }
+  findFavorites() {
+    let favPlants = this.state.plants.filter(fav => fav.plantLoved === true)
+    return favPlants
+  }
 
   render () {
     return (
@@ -71,7 +62,6 @@ class App extends Component {
         <h1>PLANTS!</h1>
         <Route exact path={'/'} render={() => {
           return (<>
-            <h1 className='browse-plants'>Browse plants</h1>
             <Search searchPlants={this.searchPlants}/>
             <section className="found-plant-cards" alt="found-plant-cards">
               { this.state.foundPlants ? 
@@ -89,18 +79,16 @@ class App extends Component {
                 <h1 className='search-prompt'>Search For plant </h1>
               }
             </section>
-            {this.state.plants && <Plants plants={this.state.plants} favorites={this.state.favorites.map(fav => fav.id)} handleClick={this.handleClick}/>}
+            {this.state.plants && <Plants plants={this.state.plants} handleClick={this.handleClick}/>}
           </>)
         }}
         />
         <Route path='/favorites/'>
-          <Favorites favorites={this.state.favorites} />
+          {this.state.plants && <Favorites favorites={this.findFavorites()} handleClick={this.handleClick} />}
         </Route>
         <Route path='/plants/:id' 
           render={(props) =>
-          <PlantInfo 
-          {...props}
-          />}
+          <PlantInfo {...props} />}
         />
       </section>
     )
@@ -113,7 +101,7 @@ App.propTypes = {
   plants: PropTypes.array,
   favorites: PropTypes.array,
   foundPlants: PropTypes.array,
-  searchPlants: Proptypes.func,
-  handleClick: Proptypes.func
+  searchPlants: PropTypes.func,
+  handleClick: PropTypes.func
 }
  
