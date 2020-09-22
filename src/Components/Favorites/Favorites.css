@@ -1,11 +1,15 @@
+.App-container {
+  background: url(../../assets/meadow-1.jpg);
+}
+
 .favorites {
   display: flex;
+  height: 100%;
   flex-direction: row;
   flex-wrap: wrap;
   display: inline-block;
-
-  /* margin: 1em;
-  grid-gap: 35px;
-  width: 100%;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); */
 }
+
+  .plant-card {
+    margin-top: 10px;
+  }
