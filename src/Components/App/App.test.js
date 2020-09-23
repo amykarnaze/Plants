@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import '@testing-library/jest-dom';
 import { screen, render, waitFor, fireEvent } from '@testing-library/react';
+import { BrowserRouter, MemoryRouter } from 'react-router-dom';
 import { NavLink, Link } from 'react-router-dom'
-import { BrowserRouter } from 'react-router-dom';
-import { fetchAllPlants } from '../../API'
-import Header from '../Header/Header'
 jest.mock('../../API')
+import { fetchAllPlants, fetchPlantInfo } from '../../API'
+import Header from '../Header/Header'
 
 describe('App component', () => {
 
@@ -36,6 +36,29 @@ describe('App component', () => {
       expect(sciName).toBeInTheDocument();
       expect(url).toBeInTheDocument();
   })
+
+  it('should render things', () => {
+    fetchAllPlants.mockResolvedValueOnce({
+      data: [
+        {
+        common_name: "lawndaisy",
+        family: "Asteracea",
+        image_url: "https://bs.floristic.org/image/o/43061c6c2cb49908503eac2eaec0ddab69958e17",
+        scientific_name: "Bellis perennis"
+        },
+        {
+        common_name: "chicory",
+        family: "Asteracea",
+        image_url: "https://bs.floristic.org/image/o/eb049be6b9186aed76ada3c8d3cd54d762842aa8",
+        scientific_name: "Cichorium intybus"
+        }
+    ]})
+    const { getByText} = render(<BrowserRouter><App /></BrowserRouter>)
+    const appHeading =  screen.getByRole('heading', {name: 'EDIBLE PLANTS!', exact: false})
+
+
+    expect(appHeading).toBeInTheDocument()
+  })
   
 
   it('should have the right information when the page loads', async () => {
@@ -54,8 +77,7 @@ describe('App component', () => {
         scientific_name: "Cichorium intybus"
         }
     ]})
-      const { getByText} = render(<BrowserRouter><App /></BrowserRouter>)
-    // render(<BrowserRouter><App /></BrowserRouter>)
+    const { getByText} = render(<BrowserRouter><App /></BrowserRouter>)
     const name =  await waitFor(() =>  screen.getByText("lawndaisy"))
     const homeLink = screen.getByText('home', { exact: false })
     const plantList = screen.getByText('YOUR PLANT LIST')
@@ -74,7 +96,31 @@ describe('App component', () => {
     expect(img).toBeInTheDocument();
   })
   
-  it.skip('should take the user to the favorite page when the favorite link is clicked', async () => {
+  it('should take the user to the favorite page when the favorite link is clicked', async () => {
+    const { getByText} = render(<BrowserRouter><App /></BrowserRouter>)
+    const favoritesLink = screen.getByRole("link", {name: 'navigate to favorite plants'})
+
+    fireEvent.click(favoritesLink)
+
+    const favHeading= screen.getByRole("heading", {name: "Your Favorites", exact: false})
+
+    expect(favHeading).toBeInTheDocument()
+  })
+
+  it('should take the user to the home page when the home link is clicked', async () => {
+    const { getByText } = render(<BrowserRouter><App /></BrowserRouter>)
+    const homeLink = screen.getByRole("link", {name: 'navigate to home page'})
+
+    fireEvent.click(homeLink)
+
+    const homeHeading = screen.getByRole('heading', { name: /check out these plants!/i })
+    const searchBox = screen.getByRole("searchbox", {name: "search", exact: false})
+
+    expect(homeHeading).toBeInTheDocument()
+    expect(searchBox).toBeInTheDocument()
+  })
+
+  it('should take the user to the plants detail page when a plant is clicked', async () => {
     fetchAllPlants.mockResolvedValueOnce({
       data: [
         {
@@ -90,93 +136,23 @@ describe('App component', () => {
           scientific_name: "Cichorium intybus"
         }
       ]})
-      // const { getByText} = render(<BrowserRouter><Plants /></BrowserRouter>)
-      render(<BrowserRouter><App /></BrowserRouter>)
-      const name = await waitFor(() => screen.getByText("lawndaisy"))
-      const sciName = screen.getByText("Bellis perennis")
-      const url = screen.getByAltText('lawndaisy', { exact: false })
-      const homeButton = screen.getByRole('button', {name: "home"})
-      const favoritePage = screen.getByRole('button', {name: "Your plant list"})
-      const search = screen.getByRole('searchbox', { name: /search/i })
-      const searchInput = screen.getByPlaceholderText('search for plant')
-      const submitButton = screen.getByRole('button', {name: 'Find'})
-      const favStar = screen.getByAltText("favorite")
+      fetchPlantInfo.mockResolvedValue({
+        data: {
+          common_name: "lawndaisy",
+          family: "Asteraceae",
+          edible_part: ["flowers"],
+          observations: "Madeira, Europe to Medit. and C.Asia"
+        }
+      })
+
+      render(<MemoryRouter><App /></MemoryRouter>)
       
-    fireEvent.change(searchInput, { target: { value: 'daisy' } })
-    expect(search).toBeInTheDocument()
-    expect(searchInput).toBeInTheDocument()
-    expect(submitButton).toBeInTheDocument()
-    expect(favoritePage).toBeInTheDocument()
-    expect(favStar).toBeInTheDocument()
-    expect(name).toBeInTheDocument();
-    expect(sciName).toBeInTheDocument();
-    expect(url).toBeInTheDocument();
-    expect(homeButton).toBeInTheDocument();
-
-    fireEvent.click(homeButton);
-    // fireEvent.click(loveButton);
+      const plantImgLink = await waitFor(() => screen.findByRole('img', {name:/lawndaisy/i}))
+      
+      fireEvent.click(plantImgLink)
+      
+      const plantDetailsHeading = await waitFor(() => screen.getByRole('heading', { name: /edible plant information and locations/i, exact: false}))
+      expect(plantDetailsHeading).toBeInTheDocument()
+      const plantFamily= await waitFor(() => screen.getByText('Asteraceae', {exact: false}))
+      expect(plantFamily).toBeInTheDocument()
   })
-
-  it.skip('should take the user to the favorite page when the favorite link is clicked', async () => {
-    fetchAllPlants.mockResolvedValueOnce({
-      data: [
-        {
-          common_name: "lawndaisy",
-          family: "Asteracea",
-          image_url: "https://bs.floristic.org/image/o/43061c6c2cb49908503eac2eaec0ddab69958e17",
-          scientific_name: "Bellis perennis"
-        },
-        {
-          common_name: "chicory",
-          family: "Asteracea",
-          image_url: "https://bs.floristic.org/image/o/eb049be6b9186aed76ada3c8d3cd54d762842aa8",
-          scientific_name: "Cichorium intybus"
-        }
-      ]})
-      render(<BrowserRouter><App /></BrowserRouter>)
-        const search = await waitFor(() => screen.getByRole('searchbox', { name: /search/i }))
-        const searchInput = screen.getByPlaceholderText('search for plant')
-        const submitButton = screen.getByRole('button', {name: 'Find'})
-
-        fireEvent.change(searchInput, { target: { value: 'lawndaisy' } })
-        fireEvent.click(submitButton);
-
-        const commName = screen.findByText("lawndaisy")
-        const sciName = screen.findByText("Bellis perennis")
-        const url = screen.findByAltText('lawndaisy', { exact: false })
-
-        expect(commName).toBeInTheDocument()
-        expect(url).toBeInTheDocument();
-        expect(sciName).toBeInTheDocument();
-  })
-
-  // it.skip('should take the user to the favorites page when the Plant List button is clicked', () => {
-  //   render(<BrowserRouter><App /></BrowserRouter>)
-
-  // })
-
-
-  
-  
-})
-
-      // plants = [{
-      //     common_name: "lawndaisy",
-      //     family: "Asteracea",
-      //     image_url: "https://bs.floristic.org/image/o/43061c6c2cb49908503eac2eaec0ddab69958e17",
-      //     scientific_name: "Bellis perennis"
-      //   },
-      //   {
-      //     common_name: "chicory",
-      //     family: "Asteracea",
-      //     image_url: "https://bs.floristic.org/image/o/eb049be6b9186aed76ada3c8d3cd54d762842aa8",
-      //     scientific_name: "Cichorium intybus"
-      //   }
-      // ]
-// <Header /><Route exact path="/" component={Plants}></Route>
-//     <Route path='/plants/:id' 
-//       render={(props) =>
-//       <PlantInfo 
-//       {...props}
-//       />}
-//     />
