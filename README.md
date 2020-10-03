@@ -10,9 +10,10 @@
 Edible plants is a mod 3 solo project that allowed us to build an app of our own imagination. An edible plants app was created to let users see all the plants that one can eat in the world! Plants are displayed and more information can be viewed if you are interested in a particular plant. A user can add plants they love to a list.
 
 Any user can view all plants, plant details and favorite a plant to a list:<br />
-![homepage](https://media.giphy.com/media/3MEFqQC4gnkCsubi1w/giphy.gif)
-Deployed App:
+![homepage](https://media.giphy.com/media/3MEFqQC4gnkCsubi1w/giphy.gif)<br />
+Deployed App:<br />
 ![deployed page](https://plants-deploy.herokuapp.com/)
+https://plants-deploy.herokuapp.com/
 
 ### SetUp
 
