@@ -156,3 +156,4 @@ describe('App component', () => {
       const plantFamily= await waitFor(() => screen.getByText('Asteraceae', {exact: false}))
       expect(plantFamily).toBeInTheDocument()
   })
+  })
