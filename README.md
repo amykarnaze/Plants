@@ -3,15 +3,13 @@
 ## Authors
 
 👤 **Amy Karnaze**
-- Github: [amykarnaze](https://github.com/amykarnaze/bon-appetit/commits?author=relyt4me)
+- Github: [amykarnaze](https://github.com/amykarnaze/)
 
 ### Abstract
 
 Edible plants is a mod 3 solo project that tasked us to build an app of our own imagination. I created an edible plants app to allow users to see all the plants that one can harvest and eat in the world!
 
-Any user can view view details and favorite plants:<br/>
-![homepage](https://media.giphy.com/media/3MEFqQC4gnkCsubi1w/giphy.gif)<br />
-Deployed App: ![deployed page](https://plants-deploy.herokuapp.com/)
+Check out Plants Deployed: ![deployed page](https://plants-deploy.herokuapp.com/)
 
 ### SetUp
 
