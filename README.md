@@ -7,19 +7,17 @@
 
 ### Abstract
 
-Edible plants is a mod 3 solo project that allowed us to build an app of our own imagination. An edible plants app was created to let users see all the plants that one can eat in the world! Plants are displayed and more information can be viewed if you are interested in a particular plant. A user can add plants they love to a list.
+Edible plants is a mod 3 solo project that tasked us to build an app of our own imagination. I created an edible plants app to allow users to see all the plants that one can harvest and eat in the world!
 
-Any user can view all plants, plant details and favorite a plant to a list:<br />
+Any user can view view details and favorite plants:<br/>
 ![homepage](https://media.giphy.com/media/3MEFqQC4gnkCsubi1w/giphy.gif)<br />
-Deployed App:<br />
-![deployed page](https://plants-deploy.herokuapp.com/)
-https://plants-deploy.herokuapp.com/
+Deployed App: ![deployed page](https://plants-deploy.herokuapp.com/)
 
 ### SetUp
 
 To view this application,
-1) Clone down the repository button and copy the link, [git clone](https://github.com/amykarnaze/Plants).
-2) Cd into the project
+1) Clone down the repository.
+2) Cd into the project.
 3) Run `npm install`.
 4) Run `npm test` to see tests pass.
 5) `npm start` runs the app in the development mode.<br />
@@ -39,14 +37,14 @@ A user can search for plants by name:<br />
 
 ## Resources
 
-View the Turing schools, [Project Spec](https://frontend.turing.io/projects/module-3/binary-challenge.html)
-GitHub [Project Board](https://github.com/amykarnaze/Plants/projects/1)
+* [Project Spec](https://frontend.turing.io/projects/module-3/binary-challenge.html)
+* [Project Board](https://github.com/amykarnaze/Plants/projects/1)
 
 ### Wins
 * React Jest testing asynchronous methods
-* Components and file structure are well organized 
-* Succesfully created a React app solo
-* Utilizing react router and its render properties
+* Components and file structure are well organized.
+* Succesfully created a React app on my own.
+* Utilized react router and its render properties.
 
 ### Challenges
 * Learning jest mocking syntax
