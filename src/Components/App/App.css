@@ -10,13 +10,16 @@ background: url(../../assets/meadow-1.jpg);
   pointer-events: none;
 }
 
+h2 {
+  text-align: center;
+}
 .found-plant-cards {
   height: 200px;
+  padding-left: 20px;
   width: 25%;
   margin-left: 20px;
   margin-right: 50px;
-  margin-bottom: 20px;;
-  border: 1px solid teal;
+  margin-bottom: 20px;
 }
 
 .plant-image {
