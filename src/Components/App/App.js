@@ -41,9 +41,9 @@ class App extends Component {
     }
 
   searchPlants = async (search) => {
-    // const plantSearch = search.charAt(0).toUpperCase() + search.slice(1).toLowerCase()
+    const plantSearch = search.charAt(0).toUpperCase() + search.slice(1).toLowerCase()
     let findPlants = await this.state.plants.forEach(plant => {
-      if (plant.common_name.includes(search)) {
+      if (plant.common_name === plantSearch) {
         this.setState({foundPlants: [plant]})
       }
     })
@@ -59,7 +59,6 @@ class App extends Component {
     return (
       <section className="App-container">
         <Header />
-        <h1>EDIBLE PLANTS!</h1>
         <Route exact path={'/'} render={() => {
           return (<>
             <Search searchPlants={this.searchPlants}/>
@@ -79,7 +78,7 @@ class App extends Component {
                 <h1 className='search-prompt'>Search For plant </h1>
               }
             </section>
-            <h2>Check out these plants!</h2>
+            <h2>View these edible plants!</h2>
             {this.state.plants && <Plants plants={this.state.plants} handleClick={this.handleClick}/>}
           </>)
         }}
