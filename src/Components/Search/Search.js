@@ -24,6 +24,7 @@ class Search extends Component {
   render() {
     return(
       <section className='search-container' alt="search-container">
+        <h1>Search for a plant by name</h1>
       <input id='search-input' aria-label='search' className='search-input' type='search' placeholder='search for plant' name='search'
         onChange={this.handleClick}
         value={this.state.search}
