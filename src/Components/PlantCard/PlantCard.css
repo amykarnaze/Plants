@@ -1,13 +1,13 @@
 .plant-card {
+  position: relative;
   height: 170px;
-  width: 300px;
-  margin-left: 1px;
-  margin-right: 1px;
+  margin: auto;
   border: 1px solid neon;
   background-color: rgb(252, 229, 250);
   border-radius: 5px;
   padding-bottom: 10em;
   box-shadow: 10px 10px 10px 0 rgba(14, 37, 1, 0.13);
+  width: fit-content;
 }
 
 .plant-card-image {
@@ -20,22 +20,32 @@
   align-items: center;
   padding-bottom: 1px;
   margin: 1em;
+  border: 1px solid transparent;
 }
 
 .unfav {
   height: 50px;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 10;
 }
 
-.active:hover {
-  background-color: magenta;
-  color: yellow;
-  border: solid 1px magenta;
-  box-shadow: 2px 2px 2px whitesmoke;
+.plant-card:hover {
+  box-shadow: 0px 0px 15px rgb(204, 165, 201);
+}
+
+.plant-card-image:hover {
+  opacity: .9;
 }
 
 .common-name {
 text-align: center;
 font-size: 18px;
+}
+
+.unfav {
+  color: black;
 }
 
 .sci-name {

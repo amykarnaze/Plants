@@ -1,13 +1,12 @@
-.App-container {
-  background: url(../../assets/meadow-1.jpg);
-}
-
 .favorites {
-  display: flex;
+  //display: flex;
   height: 100%;
+  width: 100%;
+  overflow: hidden;
   flex-direction: row;
   flex-wrap: wrap;
   display: inline-block;
+  background: url(../../assets/sky-2.jpg);
 }
 
   .plant-card {

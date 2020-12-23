@@ -1,12 +1,20 @@
-.Nav {
+.nav {
   height: 130px;
   width: 100%;
-  border-bottom: 1px solid #bea8A7;
+  background-color:#f6e5fa;
+  display: flex;
+}
+
+.name {
+  align-self: start;
+  padding: 35px 5px 5px 20px;
+  font-size: 40px;
 }
 
 nav ul {
   float: right;
   margin-right: 50px;
+  padding-left: 25em;
 }
 
 nav ul li {
@@ -19,14 +27,14 @@ nav ul li {
   font-weight: 500;
   color: magenta;
   line-height: 100px;
-  padding: 0.2em 0.2em;
+  /* padding: 0.2em 0.2em; */
   border-radius: 5px;
   margin-right: 0.8em;
   text-decoration: none;
 }
 
 .nav-link:hover {
-  background: #F4DBD8;
+  background: #0e7af5;
   transition: 0.5s;
   color: magenta;
   border: none;

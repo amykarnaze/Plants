@@ -20,7 +20,7 @@ class PlantInfo extends React.Component {
 
   render() {
     return (
-      <section className="Plant-Info">
+      <section className="plant-info">
         <section className="plant">
           <h2>Edible plant information and locations</h2>
           <h1>Common Name: {this.state.indvPlant.common_name}</h1>
