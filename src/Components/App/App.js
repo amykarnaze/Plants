@@ -36,17 +36,17 @@ class App extends Component {
     let filteredPlants = this.state.plants.filter(plant => {
       return plant.id !== favoriteObj.id
     })
-      filteredPlants.push(favoriteObj)
-      this.setState({plants: filteredPlants})
+      filteredPlants.unshift(favoriteObj)
+      this.setState({foundPlant: filteredPlants})
     }
 
   searchPlants = async (search) => {
-    const plantSearch = search.charAt(0).toUpperCase() + search.slice(1).toLowerCase()
-    let findPlants = await this.state.plants.forEach(plant => {
-      if (plant.common_name === plantSearch) {
-        this.setState({foundPlants: [plant]})
+    let findPlants = await this.state.plants.filter(plant => {
+      if (plant.common_name) {
+        return plant.common_name.toLowerCase().includes(search.toLowerCase())
       }
     })
+    this.setState({foundPlants: findPlants})
     return findPlants;
   }
 
@@ -61,7 +61,7 @@ class App extends Component {
         <Header />
         <Route exact path={'/'} render={() => {
           return (<>
-            <Search searchPlants={this.searchPlants}/>
+            <Search searchPlants={this.searchPlants} plants={this.state.plants}/>
             <section className="found-plant-cards" alt="found-plant-cards">
               { this.state.foundPlants ? 
                 this.state.foundPlants.map(plant => {
