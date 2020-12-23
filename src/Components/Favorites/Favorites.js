@@ -6,7 +6,6 @@ import PlantCard from '../PlantCard/PlantCard'
 const Favorites = (props) => {
   const displayFavorites = () => {
     if (props) {
-      console.log("FAVRS", props)
       let foundFavorites = props.favorites.map(favorite => {
         return <PlantCard plant={favorite} handleClick={props.handleClick}/>
       })
